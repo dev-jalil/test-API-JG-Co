@@ -10,16 +10,39 @@ class Datatable extends Component {
     };
   }
 
-  async componentDidMount() {
+  SetDataChild() {
     this.setState({ isLoading: true });
-    const response = await fetch(process.env.REACT_APP_BASE_URL);
-    if (response.ok) {
+    const users = this.props.data;
+    if (users.length > 0) {
+      this.setState({ users, isLoading: false });
+    }
+
+    /* else {
+      if (this.props.data.length == 0) {
+        console.log(this.props.data.length);
+        this.setState({ isError: true, isLoading: false });
+      }
+    } */
+  }
+
+  async componentDidMount() {
+    await this.SetDataChild();
+    this.timer = setInterval(() => this.SetDataChild(), 5000);
+
+    //const response = await fetch(process.env.REACT_APP_BASE_URL);
+    /*if (response.ok) {
       const data = await response.json();
       const users = data.records;
       this.setState({ users, isLoading: false });
     } else {
       this.setState({ isError: true, isLoading: false });
-    }
+    }*/
+    console.log("didmount => " + this.state.users.length);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    this.timer = null;
   }
 
   getHeaderName() {
