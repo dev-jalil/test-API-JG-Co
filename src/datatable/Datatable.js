@@ -46,6 +46,11 @@ class Datatable extends Component {
     )); */
   };
 
+  TauxDisponibilité(capacity, ebike, mechanical) {
+    var txDisponibility = ((ebike + mechanical) / capacity) * 100;
+    return Math.floor(txDisponibility) + "%";
+  }
+
   renderTableRows = () => {
     return this.state.users.map((user) => {
       return (
@@ -56,9 +61,11 @@ class Datatable extends Component {
           <td>{user.fields.ebike}</td>
           <td>{user.fields.mechanical}</td>
           <td>
-            {" "}
-            le taux de disponibilité par station pour chaque de vélo (électrique
-            et non électrique)
+            {this.TauxDisponibilité(
+              user.fields.capacity,
+              user.fields.ebike,
+              user.fields.mechanical
+            )}
           </td>
         </tr>
       );
