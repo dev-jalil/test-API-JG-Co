@@ -37,7 +37,7 @@ class Datatable extends Component {
     } else {
       this.setState({ isError: true, isLoading: false });
     }*/
-    console.log("didmount => " + this.state.users.length);
+    //console.log("didmount => " + this.state.users.length);
   }
 
   componentWillUnmount() {
@@ -70,7 +70,7 @@ class Datatable extends Component {
   };
 
   TauxDisponibilité(capacity, ebike, mechanical) {
-    var txDisponibility = ((ebike + mechanical) / capacity) * 100;
+    var txDisponibility = ((capacity - ebike - mechanical) / capacity) * 100;
     return Math.floor(txDisponibility) + "%";
   }
 
