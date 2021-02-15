@@ -1,0 +1,45 @@
+{data.map((row) => (
+          <tr>
+            {columns.map((column) => (
+              <td>{row.column}</td>
+            ))}
+          </tr>
+        ))}
+
+
+
+         <ul>
+          {data.map((item) => (
+            <li key="{item.recordid}">{item.recordid}</li>
+          ))}
+        </ul>
+
+        {data.map((row, index) => (
+          <tr>
+            {columns.map((column, index) => (
+              <td key={index}>{row.column}</td>
+            ))}
+          </tr>
+        ))}
+
+
+
+        import React from "react";
+import { DataGrid } from "@material-ui/data-grid";
+export default function Datatable({ data }) {
+  const columns = data[0] && Object.keys(data[0]);
+  return (
+    <table cellPadding={5} cellSpacing={2}>
+      <thead>
+        <tr>{data[0] && columns.map((heading) => <th> {heading} </th>)}</tr>
+      </thead>
+      <tbody>
+        {data.map((row, index) => (
+          <tr>
+            <td key={index}>{row.column}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
