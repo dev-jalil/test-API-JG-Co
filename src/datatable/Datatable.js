@@ -27,7 +27,7 @@ class Datatable extends Component {
 
   async componentDidMount() {
     await this.SetDataChild();
-    this.timer = setInterval(() => this.SetDataChild(), 5000);
+    this.timer = setInterval(() => this.SetDataChild(), 500);
 
     //const response = await fetch(process.env.REACT_APP_BASE_URL);
     /*if (response.ok) {
