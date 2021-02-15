@@ -89,7 +89,9 @@ export default function App() {
   }, []);
 
   function search(rows) {
-    return rows.filter((row) => row.fields.name.toLowerCase().indexOf(q) > -1);
+    return rows.filter(
+      (row) => row.fields.name.toLowerCase().indexOf(q.toLocaleLowerCase()) > -1
+    );
   }
 
   const classesNave = useStylesNav();
