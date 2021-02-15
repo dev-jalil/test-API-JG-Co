@@ -43,3 +43,31 @@ export default function Datatable({ data }) {
     </table>
   );
 }
+
+
+
+<div className={classesInput.root}>
+        <FormControl>
+          <InputLabel htmlFor="component-simple">
+            Filter by station name
+          </InputLabel>
+          <Input type="text" value={q} onChange={(e) => setQ(e.target.value)} />
+        </FormControl>
+      </div>
+
+
+
+      const useStylesInput = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: "25ch",
+  },
+}));
+
+
+  const classesInput = useStylesInput();
